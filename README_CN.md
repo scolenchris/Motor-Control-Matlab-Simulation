@@ -4,6 +4,8 @@
 
 ## 项目名称: 提升机构电力拖动系统设计
 
+![image](https://github.com/user-attachments/assets/e2db160d-72df-40f9-a545-13a39d66bf20)
+
 ### 目录
 
 - [电机控制 matlab-simulink 仿真](#电机控制-matlab-simulink-仿真)
