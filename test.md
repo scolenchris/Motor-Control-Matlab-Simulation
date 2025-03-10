@@ -9,27 +9,18 @@ Motor control systems are extensively utilized in various fields such as industr
 ### 1.1 Motor Type Selection
 
 When selecting a motor, we compared the operational characteristics of separately excited DC motors and three-phase asynchronous motors. By plotting their characteristics on the same coordinate system, it was observed that the three-phase asynchronous motor cannot operate stably at point A3, while the separately excited DC motor exhibits an upward curve due to the demagnetizing effect of armature reaction when the torque exceeds Tl. Additionally, the compensation method for separately excited DC motors is more straightforward and convenient.
-
 **Figure 2.1: Characteristics of Various Motor Types**
-
 In selecting a specific type of DC motor, we compared the mechanical characteristics of various excitation motors. The mechanical characteristic curve of compound-wound series motors is relatively soft, making calculations difficult. This design task requires reverse lowering of objects, which may necessitate reverse braking. However, reverse braking can alter the excitation direction of shunt generators, ultimately failing to change the motor's rotation direction.
-
 Therefore, the separately excited DC generator was ultimately selected.
 
 ### 1.2 Detailed Motor Parameter Calculation
 
 Based on the requirements: the empty hook weight is 10 kg, and the maximum load is 1000 kg. The transmission mechanism has a reduction ratio of 100:1 and an efficiency of 0.9; the flywheel inertia can be neglected. The maximum lifting speed is 1500 rpm, and the minimum lowering speed is 300 rpm. The lifting/lowering height is 25 meters, and the drum diameter is 0.4 meters.
-
 Through calculations by team members (calculation process omitted):
-
 A motor with n > 1500 rpm and a rated power PN > 3.526 kW should be selected, ensuring an output power PN·ŋ > 3.173 kW.
-
 After consulting relevant literature, the Z2-42 motor was chosen, with the following rated parameters:
-
 Rated power PN: 4 kW, Rated voltage UN = 220 V, Rated speed nN = 1500 rpm, Rated current IN = 22.3 A.
-
 **Figure 2.2: Simulation Motor Module Parameter Settings**
-
 Subsequently, motor parameters such as inductance and excitation current were estimated and entered into the Simulink motor parameter settings, as shown in the upper right figure. All subsequent simulations were based on these parameters.
 
 ## 2. Startup Scheme Selection
@@ -57,15 +48,10 @@ The parking scheme involves cutting off part of the resistance to achieve parkin
 ## 1. Preparations Before the Overall Task
 
 As the team leader, I initially assigned simulation practice tasks to team members based on the materials I had collected (various books and papers). This was to familiarize them with the functionalities of each module, thereby facilitating problem-solving. I selected examples from several books, some of which focused on speed regulation, others on startup, and some on closed-loop speed regulation, providing a diverse range of content. Issues encountered during the process were discussed collectively and resolved. Subsequently, I allocated specific tasks, allowing each team member to choose a module for in-depth research based on their interests and areas of expertise. To ensure that everyone fully understood and mastered their respective modules, I first had each member conduct preliminary simulation operations, followed by fine-tuning. Any issues were raised and discussed in the group.
-
 Below are the images of the various parts we simulated.
-
 **Figure 3.1: Simulation of Open-Loop Three-Phase Speed Regulation System**
-
 **Figure 3.2: Simulation Waveform**
-
 **Figure 3.3: Simulation of Closed-Loop Three-Phase Speed Regulation System 1**
-
 **Figure 3.4: Simulation of Closed-Loop Three-Phase Speed Regulation System 2**
 
 ## 2. Simulation Module Construction and Calculation
@@ -73,7 +59,6 @@ Below are the images of the various parts we simulated.
 ### 2.1 Initial Model Construction for Energy Consumption Braking Simulation
 
 When energy consumption braking occurs, the power supply is cut off, and the braking resistor is connected to the circuit. At this point, due to the inertia of the motor, it continues to rotate and transforms into a generator. The direction of the armature current is opposite to the original current direction, and the armature generates a braking torque to counteract the torque produced by inertia, thereby rapidly stopping the motor. By adjusting the resistance value of the braking resistor R, the braking time can be regulated. The smaller the resistance value of R, the faster the braking process; conversely, the larger the resistance value, the longer the braking time. The simulation of this process was completed using Simulink.
-
 Calculations were performed for the overall system to determine the resistance value of the energy consumption braking resistor and the minimum resistance value (to avoid excessive current). The calculation process is as follows:
 
 $\mathrm{n}=-\frac{{\mathrm{R}}_{\mathrm{a}}+{\mathrm{R}}_{\mathrm{c}}}{{\mathrm{C}}_{\mathrm{e}}{\mathrm{C}}_{\mathrm{T}}{\mathrm{\phi}}^{2}}$
@@ -93,23 +78,3 @@ $\begin{array}{c}而 {I}_{amax}=3{I}_{N}=66.9A\#\left(\text{3-7}\right)\end{arra
 $\begin{array}{c}{E}_{a}={\mathrm{C}}_{\mathrm{e}}{\mathrm{\phi}}_{\mathrm{N}}{\mathrm{n}}_{\mathrm{N}}=1000\times 0.1286=128.6V\#\left(\text{3-8}\right)\end{array}$
 
 $\begin{array}{c}{\therefore R}_{\Omega min}=\frac{128.6}{66.9}-1.21=0.7122\Omega \#\left(\text{3-9}\right)\end{array}$
-
-**Figure 3.5: Simulation Diagram of Series Resistance Starting Circuit**
-
-Firstly, the above figure illustrates the circuit for series resistance starting. The series resistance circuit is relatively complex, so I integrated it and incorporated it as a subsystem into the model. The detailed principles of the starting process are omitted, as shown in the figure below.
-
-**Figure 3.6: Encapsulation of Series Resistance Circuit**
-
-Next, the energy consumption braking system was simulated and designed as a two-stage braking process. Initially, resistor RΩ is connected, followed by resistor RΩ1. The parallel combination of these resistors significantly reduces the resistance value, thereby achieving braking and stopping. The values set were RΩ = 0.575 Ω and RΩ1 = 0.1 Ω (attempting to achieve stopping). For the breaker module, when a rising edge signal is received, the switch closes, completing the circuit. The resistor below the main switch is set to 10,000 Ω, serving as a grounding resistor to ensure that the voltage applied to the motor remains at 220 V. The motor output signal is fed into the bus selector module, which separates the bus signal into multiple signals for display on the oscilloscope. The speed component uses a gain module to convert the speed unit to rpm.
-
-**Figure 3.7: Energy Consumption Braking Simulation**
-
-The final speed waveform is as follows: energy consumption braking is applied at 11 seconds, reducing the speed to approximately -300 rpm and maintaining it. At 20 seconds, the resistors are connected in parallel, further reducing the resistance. However, the speed cannot approach zero due to the influence of Ra, preventing the slope from decreasing further. Consequently, the characteristic curve cannot intersect the x-axis, making it impossible to meet the stopping requirement. This provides a basis for scheme selection.
-
-**Figure 3.8: Simulation Image—Speed**
-
-### 2.2 Simulation Construction of Armature Power Reverse Braking
-
-The process of armature power reverse braking involves first disconnecting the motor's original power supply to halt its normal operation. Then, the polarity of the motor's power supply is reversed, i.e., the positive and negative terminals are swapped. At this point, the motor generates an electromagnetic torque opposite to its original rotation direction, rapidly decelerating the motor until it stops. If the load is small, the motor may even start in the reverse direction.
-
-The calculation process for various parameters is as follows:

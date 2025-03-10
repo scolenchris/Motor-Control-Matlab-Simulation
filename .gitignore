@@ -1,0 +1,8 @@
+# Ignore all files in the pycache directory
+__pycache__/
+
+# Ignore all files in the mmltex directory
+mmltex/
+
+# Ignore all .py files
+*.py
