@@ -4,6 +4,8 @@
 
 ## Project Name: Design of Hoisting Mechanism Electric Drive System
 
+![image](https://github.com/user-attachments/assets/e2db160d-72df-40f9-a545-13a39d66bf20)
+
 ### Table of Contents
 
 - [Motor-Control-Matlab-Simulation](#motor-control-matlab-simulation)
