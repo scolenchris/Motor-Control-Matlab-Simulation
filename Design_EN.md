@@ -1,4 +1,4 @@
-- [中文版](./Design_CN.md)
+![image](https://github.com/user-attachments/assets/f73a3215-59e6-4a66-b499-7629e60450eb)- [中文版](./Design_CN.md)
 
 # I. Research Background
 
@@ -48,6 +48,8 @@ When selecting a motor, we compared the operational characteristics of separatel
 
 **Figure 2.1: Characteristics of Various Motor Types**
 
+![image](https://github.com/user-attachments/assets/2e812cbf-0272-4626-b8b4-a5887b67c942)
+
 In selecting a specific type of DC motor, we compared the mechanical characteristics of various excitation motors. The mechanical characteristic curve of compound-wound series motors is relatively soft, making calculations difficult. This design task requires reverse lowering of objects, which may necessitate reverse braking. However, reverse braking can alter the excitation direction of shunt generators, ultimately failing to change the motor's rotation direction.
 
 Therefore, the separately excited DC generator was ultimately selected.
@@ -94,6 +96,8 @@ Rated power PN: 4 kW, Rated voltage UN = 220 V, Rated speed nN = 1500 rpm, Rated
 
 **Figure 2.2: Simulation Motor Module Parameter Settings**
 
+![image](https://github.com/user-attachments/assets/b222fbf3-3f75-403e-9262-f57e01cb76e3)
+
 Subsequently, motor parameters such as inductance and excitation current were estimated and entered into the Simulink motor parameter settings, as shown in the upper right figure. All subsequent simulations were based on these parameters.
 
 ## 2. Startup Scheme Selection
@@ -116,6 +120,8 @@ The parking scheme involves cutting off part of the resistance to achieve parkin
 
 **Figure 2.3: Overall Scheme Diagram**
 
+![image](https://github.com/user-attachments/assets/f8cd707e-15cb-42e0-8109-ec39a4838aec)
+
 # III. Process Discussion
 
 ## 1. Preparations Before the Overall Task
@@ -126,11 +132,19 @@ Below are the images of the various parts we simulated.
 
 **Figure 3.1: Simulation of Open-Loop Three-Phase Speed Regulation System**
 
+![image](https://github.com/user-attachments/assets/d198e9bd-54ee-43ff-8834-a9c523a37cb1)
+
 **Figure 3.2: Simulation Waveform**
+
+![image](https://github.com/user-attachments/assets/ca1977e5-ff91-4d05-b60f-1b0aaddb2abb)
 
 **Figure 3.3: Simulation of Closed-Loop Three-Phase Speed Regulation System 1**
 
+![image](https://github.com/user-attachments/assets/1e253db7-7c21-4ac4-93a1-5ca542afd454)
+
 **Figure 3.4: Simulation of Closed-Loop Three-Phase Speed Regulation System 2**
+
+![image](https://github.com/user-attachments/assets/206cbe0b-20e7-49dd-b743-85f795566253)
 
 ## 2. Simulation Module Construction and Calculation
 
@@ -160,17 +174,25 @@ $\begin{array}{c}{\therefore R}_{\Omega min}=\frac{128.6}{66.9}-1.21=0.7122\Omeg
 
 **Figure 3.5: Simulation Diagram of Series Resistance Starting Circuit**
 
+![image](https://github.com/user-attachments/assets/7dae6de4-84e4-488c-9a1e-53a674c10b10)
+
 Firstly, the above figure illustrates the circuit for series resistance starting. The series resistance circuit is relatively complex, so I integrated it and incorporated it as a subsystem into the model. The detailed principles of the starting process are omitted, as shown in the figure below.
 
 **Figure 3.6: Encapsulation of Series Resistance Circuit**
+
+![image](https://github.com/user-attachments/assets/8c4b427b-8cac-43d3-8398-e421ffb99f98)
 
 Next, the energy consumption braking system was simulated and designed as a two-stage braking process. Initially, resistor RΩ is connected, followed by resistor RΩ1. The parallel combination of these resistors significantly reduces the resistance value, thereby achieving braking and stopping. The values set were RΩ = 0.575 Ω and RΩ1 = 0.1 Ω (attempting to achieve stopping). For the breaker module, when a rising edge signal is received, the switch closes, completing the circuit. The resistor below the main switch is set to 10,000 Ω, serving as a grounding resistor to ensure that the voltage applied to the motor remains at 220 V. The motor output signal is fed into the bus selector module, which separates the bus signal into multiple signals for display on the oscilloscope. The speed component uses a gain module to convert the speed unit to rpm.
 
 **Figure 3.7: Energy Consumption Braking Simulation**
 
+![image](https://github.com/user-attachments/assets/d74ad64a-6f2b-4a7b-a7c8-812249daff8c)
+
 The final speed waveform is as follows: energy consumption braking is applied at 11 seconds, reducing the speed to approximately -300 rpm and maintaining it. At 20 seconds, the resistors are connected in parallel, further reducing the resistance. However, the speed cannot approach zero due to the influence of Ra, preventing the slope from decreasing further. Consequently, the characteristic curve cannot intersect the x-axis, making it impossible to meet the stopping requirement. This provides a basis for scheme selection.
 
 **Figure 3.8: Simulation Image—Speed**
+
+![image](https://github.com/user-attachments/assets/c4b78721-61f8-497a-a468-baeeb50e484f)
 
 ### 2.2 Simulation Construction of Armature Power Reverse Braking
 
@@ -194,19 +216,29 @@ Below is the simulation circuit I constructed. The startup process is omitted, a
 
 **Figure 3.9: Reverse Braking Simulation**
 
+![image](https://github.com/user-attachments/assets/4f1cacce-29e1-41db-a726-57c5c33d26cf)
+
 The final simulation results were unsatisfactory, as shown in the figure below. Initially, I connected the reverse braking in series with the armature circuit, but in reality, it should be connected in parallel. Under equivalent conditions, reverse braking is in series. Therefore, I modified the circuit to connect it in parallel and substituted the calculated parameter values into the simulation model. However, the resulting image showed that the reversal speed was too fast, and the current was very high.
 
 After further research, I found that reverse braking causes the motor's reverse rotation speed to increase rapidly. Although this method can achieve rapid braking and stopping, the armature current also increases significantly. This high current places a substantial load on the motor and related equipment, posing potential safety hazards and equipment wear issues. Therefore, it is not suitable for deployment in practical applications, providing a basis for scheme selection.
 
 **Figure 3.10: Simulation Image—Speed**
 
+![image](https://github.com/user-attachments/assets/c0b8aa93-1a5c-43d2-9bf5-d6607a05c636)
+
 **Figure 3.11: Simulation Image—Armature Current**
+
+![image](https://github.com/user-attachments/assets/7c2ae02f-0cd5-49ec-8be4-1515ea30ba85)
 
 ### 2.3 Final Design of Reverse Braking and Stopping Simulation with Speed Reversal
 
 **Figure 3.12: Encapsulation of Braking and Stopping Module**
 
+![image](https://github.com/user-attachments/assets/ed5e3701-725a-4b44-9f3b-34eee4b9b290)
+
 **Figure 3.13: Encapsulation of Speed Regulation Module**
+
+![image](https://github.com/user-attachments/assets/70ed695f-f1cf-43b0-a8a2-4f2fef78ba3d)
 
 After integrating the speed regulation module and the stopping module, and encapsulating each part as a subsystem, the system interface and structure became clearer. The braking and stopping modules are implemented through reverse braking with speed reversal, replacing the previous energy consumption braking. Practice has shown that this design is superior to the original parallel design, and the final results are very satisfactory.
 
@@ -262,9 +294,13 @@ The simulation model is as follows, briefly explained.
 
 **Figure 3.14: Simulation of Series Resistance and Speed Regulation**
 
+![image](https://github.com/user-attachments/assets/606bf0d4-b14c-40e2-bd51-68c6894f2286)
+
 ## 4. Overall Simulation Design
 
 **Figure 3.15: Overall Simulation Circuit**
+
+![image](https://github.com/user-attachments/assets/d6e513f4-0d71-4d37-a677-2f1b0e78082e)
 
 In the overall design, the speed regulation resistors are divided into multiple stages, with resistors of 4 Ω, 2 Ω, and 1 Ω sequentially connected to the circuit for speed regulation. The calculation process for speed regulation is detailed in Section 3 of Chapter 4. For the overall design, the initial speed of 1500 rpm is first adjusted to 1200 rpm. Through calculations, a series resistance of 2 Ω is determined, which differs slightly from the simulated result of 1176 rpm. Similarly, resistors of 4 Ω, 2 Ω, and 1 Ω are sequentially connected to achieve multi-stage speed reduction. The calculation process is omitted, and the final speed results are discussed in the results analysis.
 
@@ -276,11 +312,17 @@ For braking and stopping, a smooth stopping method is adopted. Initially, the lo
 
 **Figure 4.1: Waveform Image of Overall Simulation Data**
 
+![image](https://github.com/user-attachments/assets/8fd41852-090d-4f7a-942d-d446c4e8cf98)
+
 As shown in the simulation results, the speed changes rapidly during the startup and braking processes. The current experiences sudden changes at the moments of startup and braking but does not exceed twice the rated current (IN). Therefore, the armature current remains within a safe range, and the system operates normally.
 
 **Figure 4.2: Mechanical Characteristics Diagram of the Operation Process Processed in Excel**
 
+![image](https://github.com/user-attachments/assets/26deb4f8-795d-4e66-a2b6-553f395e7259)
+
 **Figure 4.3: Waveform Diagram of Overall Operation**
+
+![image](https://github.com/user-attachments/assets/e680dcc2-3204-4688-ba61-9fd2e32d0725)
 
 After processing with Excel, as shown in Figure 4.2, the diagram is compared with the ideal mechanical characteristic curves calculated theoretically in the previous sections. The high degree of matching and correspondence indicates a successful simulation result.
 
@@ -302,11 +344,15 @@ Using MATLAB, the theoretical mechanical characteristic diagram and operating po
 
 **Figure 4.4: Theoretical Analysis Diagram of the Speed Regulation Process**
 
+![image](https://github.com/user-attachments/assets/a9147b8c-de93-4889-a601-c3f73045fa1e)
+
 ## 3. Analysis of Speed Regulation Process
 
 Using MATLAB, the diagram on the right is plotted based on the characteristic formulas. Without series resistors, the operating point is at A. After connecting the resistors, the operating point shifts to B and moves downward along the new operating curve to C, achieving a downward adjustment of the base speed. The total series resistance for the speed regulation process is 9.4 Ω, which is relevant to the subsequent stopping and speed regulation resistor calculations. The analysis of current, voltage, and torque variations is omitted.
 
 **Figure 4.5: Theoretical Analysis Diagram of the Speed Regulation Process**
+
+![image](https://github.com/user-attachments/assets/5070fcea-c10c-46ff-9a51-9f9cf656e87e)
 
 ## 4. Analysis of Braking and Stopping Process
 
@@ -316,8 +362,12 @@ Using MATLAB, the diagram on the right is plotted based on the characteristic fo
 
 **Figure 4.6: Theoretical Analysis Diagram of Reverse Braking**
 
+![image](https://github.com/user-attachments/assets/161cdde0-1773-4f3d-b933-4c864556b877)
+
 ### 4.2 Reliable Stopping Process
 
 The braking process employs speed regulation braking to achieve smoother speed control. Although the calculations are complex, the results are significant, resulting in a more elegant motion trajectory for the load. Specifically, as shown in the diagram below, R2 and R3 are short-circuited, causing the load torque to equal the output torque. When the speed reduces to 0, the acceleration approximates 0, achieving stopping. The analysis of current, voltage, and torque variations is omitted.
 
 **Figure 4.7: Stopping Simulation Circuit Diagram**
+
+![image](https://github.com/user-attachments/assets/4c167521-1e1f-4877-93cb-7877f656642f)
