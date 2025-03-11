@@ -1,4 +1,5 @@
-![image](https://github.com/user-attachments/assets/f73a3215-59e6-4a66-b499-7629e60450eb)- [中文版](./Design_CN.md)
+- [中文版](./Design_CN.md)
+- **Due to GitHub's poor support for LaTeX, please download and use Typora to view**
 
 # I. Research Background
 
