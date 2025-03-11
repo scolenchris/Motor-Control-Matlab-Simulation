@@ -12,24 +12,36 @@
 ### 1.1 电机类型选择
 
 估算电枢回路电阻:
+
 ${R}_{a}=\left(\frac{1}{2}~\frac{2}{3}\right)\frac{{U}_{N}{I}_{N}-{P}_{N}}{{{I}_{N}}^{2}}=\frac{2}{3}\times \frac{220\times 22.3-4000}{{22.3}^{2}}=1.21\mathrm{\Omega}$
+
 计算 CeФ_N:
 
 $\mathrm{C}\mathrm{e}{\mathrm{\phi}}_{N}=\frac{{U}_{N}\mathrm\ -{I}_{N}{R}_{a}}{{n}_{N}}=\frac{220-1.21\times 22.3}{1500}=0.1286\mathrm\ \mathrm{V}/(\mathrm{r}\bullet {\mathrm{m}\mathrm{i}\mathrm{n}}^{-1})$
+
 计算空载转速:
+
 ${n}_{0}=\frac{{U}_{N}}{\mathrm{C}\mathrm{e}{\mathrm{\phi}}_{N}}=\frac{220}{0.1286}=1710.73\mathrm\ \mathrm\ \mathrm{r}\bullet {\mathrm{m}\mathrm{i}\mathrm{n}}^{-1}$
+
 计算额定转矩：
+
 ${T}_{N}=9.55\mathrm{C}\mathrm{e}{\mathrm{\phi}}_{N}{I}_{N}=9.55\times 0.1286\times 22.3=27.387\mathrm\ \mathrm{N}\bullet \mathrm{m}$
+
 估算电枢电感：
+
 ${\mathrm{L}}_{\mathrm{a}}=19.1\times \frac{C{U}_{N}}{2P{n}_{N}{I}_{N}}=19.1\times \frac{0.4\times 220}{2\times 1\times 1500\times 22.3}=0.02512\mathrm\ \mathrm{H}$
+
 估算励磁电流：
-设 R*f=20Ω 则
+设 R\*f=20Ω 则
+
 ${I}*{f}=\frac{{U}_{f}}{{R}_{f}}=\frac{220}{20}=11\mathrm{A}$
 
 估算电动势常数:
+
 ${K}_{E}=\frac{60}{2\pi}\times \mathrm{C}\mathrm{e}{\mathrm{\phi}}_{N}=0.1286\times \frac{60}{2\pi}=1.228$
 
 估算电枢绕组和励磁绕组互感:
+
 $\mathrm{L}\mathrm{a}\mathrm{f}=\frac{{K}_{E}}{{I}_{f}}=\frac{1.288}{11}=0.1116\mathrm\ \mathrm{H}$
 
 在选择电机时，我们比较了他励直流电动机和三相异步电动机的工作特性。通过将二者的特性并绘制在同一坐标系中，可以看出，三相异步电机在 A3 处无法稳定运行，而他励直流电动机在力矩大于 Tl 后由于电枢反应的去磁作用产生了上翘的现象，且他励直流电机的补偿方式更为方便简洁。
@@ -44,18 +56,23 @@ $\mathrm{L}\mathrm{a}\mathrm{f}=\frac{{K}_{E}}{{I}_{f}}=\frac{1.288}{11}=0.1116\
 ### 1.2 电机详细参数计算
 
 转矩：
+
 ${T}_{F}=\mathrm{m}\mathrm{g}\cdot \mathrm{r}=1010\times 10\times \frac{0.2}{4}=2020\mathrm{N}\cdot \mathrm{m}$
 
 减速比：
+
 ${n}_{\mathrm{turn}}=\mathrm\ \frac{{n}_{max}}{100}=\frac{1500}{100}=15\mathrm{r}/\mathrm{m}\mathrm{i}\mathrm{n}$
 
 输出功率：
+
 ${P}_{{F}_{max}}={T}_{F}\cdot {\mathrm{\Omega}}_{max}=2020\times \frac{2\pi \times 15}{60}=3.173\mathrm{k}\mathrm{w}$
 
 故最小额定功率:
+
 $P_{N} = \frac{P_{F_{\text{max}}}}{\text{ŋ}} = \frac{3.173}{0.9} = 3.526\, \mathrm{kW}$
 
 对应电磁转矩：
+
 ${T}_{N}=\frac{{P}_{N}}{\frac{2\pi n}{60}}=\frac{3526}{\frac{2\pi \times 1500}{60}}=22.447\mathrm{N}\cdot \mathrm{m}$
 
 根据需求：空勾重量为 10 公斤，最大载重为 1000 公斤。传动机构的减速比为 100:1，传动效率为 0.9；飞轮惯量可以忽略不计。提升重物的最高转速为 1500 转/分钟，下放重物的最低转速为 300 转/分钟。提升/下降的高度为 25 米，卷筒的直径为 0.4 米。
