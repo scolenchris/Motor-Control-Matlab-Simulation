@@ -3,6 +3,35 @@
 
 # I. Research Background
 
+## Content
+
+- [I. Research Background](#i-research-background)
+  - [Content](#content)
+- [II. Scheme Demonstration (Design Concept)](#ii-scheme-demonstration-design-concept)
+  - [1. Motor Selection and Parameter Calculation](#1-motor-selection-and-parameter-calculation)
+    - [1.1 Motor Type Selection](#11-motor-type-selection)
+    - [1.2 Detailed Motor Parameter Calculation](#12-detailed-motor-parameter-calculation)
+  - [2. Startup Scheme Selection](#2-startup-scheme-selection)
+  - [3. Speed Regulation Scheme Selection](#3-speed-regulation-scheme-selection)
+  - [4. Braking Scheme Selection](#4-braking-scheme-selection)
+  - [5. Parking Scheme Selection](#5-parking-scheme-selection)
+  - [6. Overall Scheme Diagram](#6-overall-scheme-diagram)
+- [III. Process Discussion](#iii-process-discussion)
+  - [1. Preparations Before the Overall Task](#1-preparations-before-the-overall-task)
+  - [2. Simulation Module Construction and Calculation](#2-simulation-module-construction-and-calculation)
+    - [2.1 Initial Model Construction for Energy Consumption Braking Simulation](#21-initial-model-construction-for-energy-consumption-braking-simulation)
+    - [2.2 Simulation Construction of Armature Power Reverse Braking](#22-simulation-construction-of-armature-power-reverse-braking)
+    - [2.3 Final Design of Reverse Braking and Stopping Simulation with Speed Reversal](#23-final-design-of-reverse-braking-and-stopping-simulation-with-speed-reversal)
+  - [3. Simulation and Calculation of Series Resistance Starting and Speed Regulation](#3-simulation-and-calculation-of-series-resistance-starting-and-speed-regulation)
+  - [4. Overall Simulation Design](#4-overall-simulation-design)
+- [IV. Results Analysis](#iv-results-analysis)
+  - [1. Analysis of Overall Simulation Results](#1-analysis-of-overall-simulation-results)
+  - [2. Analysis of Multi-Stage Startup Process](#2-analysis-of-multi-stage-startup-process)
+  - [3. Analysis of Speed Regulation Process](#3-analysis-of-speed-regulation-process)
+  - [4. Analysis of Braking and Stopping Process](#4-analysis-of-braking-and-stopping-process)
+    - [4.1 Reverse Braking Process with Speed Reversal](#41-reverse-braking-process-with-speed-reversal)
+    - [4.2 Reliable Stopping Process](#42-reliable-stopping-process)
+
 Motor control systems are extensively utilized in various fields such as industry, transportation, and household appliances. With the advancement of technology, advanced control methods like vector control and direct torque control have emerged, imposing new requirements on system design. The course design of motor control involves multiple disciplines including automatic control, electronic technology, and computer applications, which aids students in integrating theoretical knowledge with practical applications, thereby enhancing their ability to comprehensively utilize knowledge. In terms of applications, motor control systems play a pivotal role in modern industrial automation, including CNC machine tools, robotics, and electric vehicles. Designing based on specific application contexts can improve practicality and relevance. Educationally, this serves as a crucial practical component for automation majors. Through course design, students can grasp fundamental principles and design methodologies, cultivate hands-on skills and engineering practice capabilities, and be introduced to preliminary research work, fostering research interest and competence.
 
 # II. Scheme Demonstration (Design Concept)
