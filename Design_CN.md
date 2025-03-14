@@ -1,5 +1,7 @@
 - [English Version](./Design_EN.md)
 - **由于 GitHub 对 latex 糟糕的支持，请下载后使用 typora 查看**
+- 为了更好的阅读体验，可以直接点击进入我的 blog 进行阅读（公式能够显示正常）
+- [blog 文章链接](https://scolenchris.top/posts/69002990.html)
 
 # 一、选题背景
 
@@ -43,6 +45,8 @@
 估算电枢回路电阻:
 
 ${R}_{a}=\left(\frac{1}{2}~\frac{2}{3}\right)\frac{{U}_{N}{I}_{N}-{P}_{N}}{{{I}_{N}}^{2}}=\frac{2}{3}\times \frac{220\times 22.3-4000}{{22.3}^{2}}=1.21\mathrm{\Omega}$
+
+{% raw %}$${R}_{a}=\left(\frac{1}{2}~\frac{2}{3}\right)\frac{{U}_{N}{I}_{N}-{P}_{N}}{{{I}_{N}}^{2}}=\frac{2}{3}\times \frac{220\times 22.3-4000}{{22.3}^{2}}=1.21\mathrm{\Omega}$${% endraw %}
 
 计算 CeФ_N:
 

@@ -1,5 +1,7 @@
 - [中文版](./Design_CN.md)
 - **Due to GitHub's poor support for LaTeX, please download and use Typora to view**
+- For a better reading experience, you can directly click on my blog to read (the formula can be displayed normally)
+- [Blog article link](https://scolenchris.top/posts/c401f86e.html)
 
 # I. Research Background
 
