@@ -31,7 +31,7 @@ This project aims to design an electric drive system for a hoisting mechanism, f
 - [中文版](./Design_CN.md)
 - [English Version](./Design_EN.md)
 - For a better reading experience, you can directly click on my blog to read (the formula can be displayed normally)
--
+- [Blog article link](https://scolenchris.top/posts/c401f86e.html)
 
 ## Design Requirements
 

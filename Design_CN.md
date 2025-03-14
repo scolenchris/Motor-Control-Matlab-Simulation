@@ -46,8 +46,6 @@
 
 ${R}_{a}=\left(\frac{1}{2}~\frac{2}{3}\right)\frac{{U}_{N}{I}_{N}-{P}_{N}}{{{I}_{N}}^{2}}=\frac{2}{3}\times \frac{220\times 22.3-4000}{{22.3}^{2}}=1.21\mathrm{\Omega}$
 
-{% raw %}$${R}_{a}=\left(\frac{1}{2}~\frac{2}{3}\right)\frac{{U}_{N}{I}_{N}-{P}_{N}}{{{I}_{N}}^{2}}=\frac{2}{3}\times \frac{220\times 22.3-4000}{{22.3}^{2}}=1.21\mathrm{\Omega}$${% endraw %}
-
 计算 CeФ_N:
 
 $\mathrm{C}\mathrm{e}{\mathrm{\phi}}_{N}=\frac{{U}_{N}\mathrm\ -{I}_{N}{R}_{a}}{{n}_{N}}=\frac{220-1.21\times 22.3}{1500}=0.1286\mathrm\ \mathrm{V}/(\mathrm{r}\bullet {\mathrm{m}\mathrm{i}\mathrm{n}}^{-1})$
